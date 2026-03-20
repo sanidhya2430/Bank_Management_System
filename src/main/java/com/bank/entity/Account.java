@@ -1,10 +1,15 @@
 package com.bank.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Account {
 
     @Id
@@ -15,6 +20,7 @@ public class Account {
     private double balance;
 
     @ManyToOne
+    @JsonBackReference
     private Customer customer;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
